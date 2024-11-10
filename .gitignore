@@ -1,0 +1,14 @@
+```gitignore
+# Exclude
+**/.*
+**/_*
+**/out
+**/tmp
+**/temp
+**/cache
+**/build
+**/dist
+**/log
+**/logs
+# Ignore
+!/.gitignore
