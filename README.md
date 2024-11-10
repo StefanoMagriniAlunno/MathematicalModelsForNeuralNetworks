@@ -3,4 +3,9 @@ To clone this repository in your device:
   git clone https://github.com/StefanoMagriniAlunno/MathematicalModelsForNeuralNetworks
 ~~~
 
-Run >>./repo.sh to read how to initialize this repository
+To read how to initialize this repository
+~~~bash
+  cd MathematicalModelsForNeuralNetworks
+  ./repo.sh
+~~~
+and follow the instructions.
