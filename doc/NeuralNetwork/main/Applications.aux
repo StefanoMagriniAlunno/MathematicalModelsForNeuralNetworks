@@ -1,0 +1,107 @@
+\relax
+\providecommand\hyper@newdestlabel[2]{}
+\citation{github_repo}
+\citation{DLAI}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Applications}{33}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ch:Applications}{{4}{33}{Applications}{chapter.4}{}}
+\newlabel{ch:Applications@cref}{{[chapter][4][]4}{[1][33][]33}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Implementations}{33}{section.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagram of the Hopfield neural network. The input (on the top) passes through a fully connected layer with parameters $\beta X^T$ and zero bias. The logits are then fed into a cyclic loop, and the output is obtained. To reconstruct the image, we can use the \textit  {probs} layer; $Xp=\xi $, so we can connect an FC layer without bias and weights $X$ to the \textit  {probs} layer.\relax }}{33}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:FCL}{{4.1}{33}{Diagram of the Hopfield neural network. The input (on the top) passes through a fully connected layer with parameters $\beta X^T$ and zero bias. The logits are then fed into a cyclic loop, and the output is obtained. To reconstruct the image, we can use the \textit {probs} layer; $Xp=\xi $, so we can connect an FC layer without bias and weights $X$ to the \textit {probs} layer.\relax }{figure.caption.18}{}}
+\newlabel{fig:FCL@cref}{{[figure][1][4]4.1}{[1][33][]33}}
+\@writefile{toc}{\contentsline {paragraph}{Convolutions}{34}{section*.19}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The neural network receives data in the form of $C_i \times S$. A convolutional layer computes the logit vector for each region, producing data in the form of $C_o \times S$. A pointwise softmax is then applied to each logit vector. Finally, each logit vector is linearly transformed and a pointwise convolutional layer is applied, producing data of the form $C_o \times S$.\relax }}{34}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:CNN}{{4.2}{34}{The neural network receives data in the form of $C_i \times S$. A convolutional layer computes the logit vector for each region, producing data in the form of $C_o \times S$. A pointwise softmax is then applied to each logit vector. Finally, each logit vector is linearly transformed and a pointwise convolutional layer is applied, producing data of the form $C_o \times S$.\relax }{figure.caption.20}{}}
+\newlabel{fig:CNN@cref}{{[figure][2][4]4.2}{[1][34][]34}}
+\@writefile{loe}{\addvspace {10\p@ }}
+\@writefile{loe}{\contentsline {remark}{\ifthmt@listswap \else \numberline {\let \autodot \@empty }\fi Remark\thmtformatoptarg {Generalized Continuous Hopfield Neural Networks}}{34}{thmt@dummyctr.dummy.55}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Autoencoders}{34}{section*.21}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces The input is passed to the autoencoder with a simple multiplication ($\sqrt  {\beta }$), then the autoencoder multiplies its input by $M^T$, this produces a vector of $P$ logits $l$, after a softmax we get a discrete distribution $p$. Now it's possible to simulate this distribution with one or more samples. This distribution is then passed to the decoder which multiplies it by $M$. This is a single loop and we can answer it using the output as a new input.\relax }}{35}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:VAE}{{4.3}{35}{The input is passed to the autoencoder with a simple multiplication ($\sqrt {\beta }$), then the autoencoder multiplies its input by $M^T$, this produces a vector of $P$ logits $l$, after a softmax we get a discrete distribution $p$. Now it's possible to simulate this distribution with one or more samples. This distribution is then passed to the decoder which multiplies it by $M$. This is a single loop and we can answer it using the output as a new input.\relax }{figure.caption.22}{}}
+\newlabel{fig:VAE@cref}{{[figure][3][4]4.3}{[1][35][]35}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}DeepHNN}{35}{section.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces We have two features: triangles and circles. By using $3$ patterns per feature, we can better capture the data with better coverage. However, the result may be more confusing.\relax }}{36}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:DeepHNNDiagram}{{4.4}{36}{We have two features: triangles and circles. By using $3$ patterns per feature, we can better capture the data with better coverage. However, the result may be more confusing.\relax }{figure.caption.23}{}}
+\newlabel{fig:DeepHNNDiagram@cref}{{[figure][4][4]4.4}{[1][35][]36}}
+\newlabel{alg:HNN_forward}{{4.1}{36}{DeepHNN forward pass}{lstlisting.4.1}{}}
+\newlabel{alg:HNN_forward@cref}{{[listing][1][4]4.1}{[1][36][]36}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}DeepHNN forward pass}{36}{lstlisting.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A Simple Experiment}{36}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{DeepHNN as MLP}{36}{section*.26}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Applying a Hopfield neural network to two MNIST images. The Hopfield neural network had $\beta = 0.07$ and ran for 2 iterations.\relax }}{37}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:SimpleExp}{{4.5}{37}{Applying a Hopfield neural network to two MNIST images. The Hopfield neural network had $\beta = 0.07$ and ran for 2 iterations.\relax }{figure.caption.25}{}}
+\newlabel{fig:SimpleExp@cref}{{[figure][5][4]4.5}{[1][36][]37}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}ConvHNN2d}{37}{section.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces On the left the loss evolution during training (in orange the cross entropy loss, in blue the part due to the regularization), on the right the accuracy evolution.\relax }}{38}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:asMLP}{{4.6}{38}{On the left the loss evolution during training (in orange the cross entropy loss, in blue the part due to the regularization), on the right the accuracy evolution.\relax }{figure.caption.27}{}}
+\newlabel{fig:asMLP@cref}{{[figure][6][4]4.6}{[1][37][]38}}
+\newlabel{alg:CNN_forward}{{4.2}{38}{ConvHNN2d forward pass}{lstlisting.4.2}{}}
+\newlabel{alg:CNN_forward@cref}{{[listing][2][4]4.2}{[1][38][]38}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}ConvHNN2d forward pass}{38}{lstlisting.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Patterns with low bias (in red) are ignored as logits. In this way these patterns protect correct patterns with higher bias.\relax }}{39}{figure.caption.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Variational Hopfield Neural Network (VHNN)}{39}{section.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Above is an image from MNIST with Gaussian noise (variance: $1.44$). The Hopfield convolution layer highlights certain patterns in the image (see white pixels). A linear CNN finds $3$ patterns from logits. An activation function then removes the residual noise so that a transposed CNN reconstructs the logits of the Hopfield convolution. Finally, the patterns from the Hopfield convolution are used to reconstruct the original image without noise.\relax }}{40}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:CNNexample}{{4.8}{40}{Above is an image from MNIST with Gaussian noise (variance: $1.44$). The Hopfield convolution layer highlights certain patterns in the image (see white pixels). A linear CNN finds $3$ patterns from logits. An activation function then removes the residual noise so that a transposed CNN reconstructs the logits of the Hopfield convolution. Finally, the patterns from the Hopfield convolution are used to reconstruct the original image without noise.\relax }{figure.caption.29}{}}
+\newlabel{fig:CNNexample@cref}{{[figure][8][4]4.8}{[1][39][]40}}
+\newlabel{alg:VHNN_forward}{{4.3}{41}{VHNN forward pass}{lstlisting.4.3}{}}
+\newlabel{alg:VHNN_forward@cref}{{[listing][3][4]4.3}{[1][41][]41}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.3}VHNN forward pass}{41}{lstlisting.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{A Simple Experiment}{41}{section*.30}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces \relax }}{41}{table.caption.31}\protected@file@percent }
+\newlabel{tab:Delta}{{4.1}{41}{\relax }{table.caption.31}{}}
+\newlabel{tab:Delta@cref}{{[table][1][4]4.1}{[1][41][]41}}
+\newlabel{fig:VHNNexample}{{\caption@xref {fig:VHNNexample}{ on input line 353}}{42}{A Simple Experiment}{figure.caption.32}{}}
+\newlabel{fig:VHNNexample@cref}{{[section][4][4]4.4}{[1][42][]42}}
+\@setckpt{main/Applications}{
+\setcounter{page}{43}
+\setcounter{equation}{0}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{2}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{4}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{8}
+\setcounter{table}{1}
+\setcounter{@pps}{0}
+\setcounter{@ppsavesec}{0}
+\setcounter{@ppsaveapp}{0}
+\setcounter{mn@abspage}{47}
+\setcounter{lofdepth}{1}
+\setcounter{lotdepth}{1}
+\setcounter{float@type}{16}
+\setcounter{parentequation}{0}
+\setcounter{thmt@dummyctr}{55}
+\setcounter{caption@flags}{0}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{lstnumber}{33}
+\setcounter{algorithm}{0}
+\setcounter{ALG@line}{0}
+\setcounter{ALG@rem}{0}
+\setcounter{ALG@nested}{0}
+\setcounter{ALG@Lnr}{2}
+\setcounter{ALG@blocknr}{10}
+\setcounter{ALG@storecount}{0}
+\setcounter{ALG@tmpcounter}{0}
+\setcounter{NAT@ctr}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{4}
+\setcounter{bookmark@seq@number}{19}
+\setcounter{definition}{0}
+\setcounter{theorem}{0}
+\setcounter{proposition}{0}
+\setcounter{lemma}{0}
+\setcounter{lstlisting}{3}
+\setcounter{section@level}{4}
+}

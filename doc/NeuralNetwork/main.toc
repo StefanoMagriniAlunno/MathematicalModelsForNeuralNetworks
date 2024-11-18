@@ -1,0 +1,28 @@
+\babel@toc {english}{}\relax
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Discrete Hopfield Networks}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Derivation}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Sequential dynamics}{5}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Stochastic model}{7}{subsection.2.1.2}%
+\contentsline {paragraph}{Markov chains}{8}{section*.3}%
+\contentsline {section}{\numberline {2.2}Statistical mechanics perspective}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Curie-Weiss model}{12}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Hopfield model}{16}{subsection.2.2.2}%
+\contentsline {chapter}{\numberline {3}Continuous Hopfield Neural Networks}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Derivation}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Properties}{23}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Convergence}{25}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Analysis}{28}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Comparison with discrete Hopfield network}{31}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Applications}{33}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Implementations}{33}{section.4.1}%
+\contentsline {paragraph}{Convolutions}{34}{section*.19}%
+\contentsline {paragraph}{Autoencoders}{34}{section*.21}%
+\contentsline {section}{\numberline {4.2}DeepHNN}{35}{section.4.2}%
+\contentsline {paragraph}{A Simple Experiment}{36}{section*.24}%
+\contentsline {paragraph}{DeepHNN as MLP}{36}{section*.26}%
+\contentsline {section}{\numberline {4.3}ConvHNN2d}{37}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Variational Hopfield Neural Network (VHNN)}{39}{section.4.4}%
+\contentsline {paragraph}{A Simple Experiment}{41}{section*.30}%
+\contentsline {chapter}{\numberline {5}Conclusion}{43}{chapter.5}%
+\contentsline {chapter}{Bibliography}{44}{section*.34}%

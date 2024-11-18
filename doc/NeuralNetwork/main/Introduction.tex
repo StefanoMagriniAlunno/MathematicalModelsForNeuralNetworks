@@ -1,0 +1,43 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+% Introduzione del contesto storico del machine learning
+Neural networks found their roots in the $1940$s, when Norbert Wiener introduced the concept of cybernetics with his book \textit{Cybernetics: Or Control and Communication in the Animal and the Machine}. The goal of cybernetics was to mimic natural systems to create mathematical models that could support the development of artificial intelligences. In particular, the attempt to replicate biological neural networks proved to be an attractive goal not only for mathematics, but also for many other disciplines. \footnote{For more about cybernetics, see \url{https://en.wikipedia.org/wiki/Cybernetics:_Or_Control_and_Communication_in_the_Animal_and_the_Machine}}
+
+\noindent In the $1950$s, Frank Rosenblatt defined the perceptron in his article \textit{The perceptron: A probabilistic model for information storage and organization in the brain}, the first example of a neural network capable of autonomous learning to classify data. Despite its many limitations, the perceptron was an important starting point for understanding the direction of neural network research.
+
+\noindent In the $1980$s, John Hopfield in his article \textit{Neural networks and physical systems with emergent collective computational abilities} proposed the first example of a neural network with an associative memory function. As time went on, researchers succeeded better and better in mimicking some of the basic functions of the human brain. Hopfield's networks were able to reconstruct or recall patterns without the use of indexical systems: the network stored information in a distributed manner and was able to retrieve it independently.
+
+\noindent In the $1980$s, the backpropagation algorithm was also developed, marking a breakthrough for training feedforward networks and opening the door to deep learning \footnote{For more about backpropagation, see \textit{Applications of advances in nonlinear sensitivity analysis} of Paul J. Werbos}. In the $1990$s, convolutional networks (CNNs) and recurrent networks (RNNs), specific models that address practical application needs of neural networks, are introduced. Finally, thanks to technological advancement and the availability of more computational resources since 2010, it has become possible to effectively explore deep neural networks, revealing their extraordinary potential.
+
+% Importanza storica delle reti di hopfield nel machine learning
+\bigskip\noindent Hopfield networks introduced the possibility of storing patterns nonsequentially, making it possible to retrieve incomplete or noisy information. The network can recognize a pattern even if it is presented with a partial or distorted version, as human memory does when it recognizes a familiar face or object. This concept was novel compared to “addressed” memory systems, opening new avenues for implementing more flexible patterns.
+
+\noindent Hopfield networks represented an example of distributed memory, in which every neuron in the network participates in the storage process. Unlike centralized memory systems, information in a Hopfield network is distributed among all synaptic connections, which makes it resistant to local errors and increases storage capacity.
+
+\noindent Despite limitations in scalability, Hopfield networks have been successfully used to solve combinatorial optimization problems, such as the traveling salesman problem. The novel approach of Hopfield networks has inspired further developments in recurrent networks and associative memories, also influencing applications of modern recurrent neural networks.
+
+\noindent Hopfield networks, while fundamental, had limitations such as low storage capacity and difficulty scaling to complex problems. However, they provided a strong impetus for subsequent research, leading to the development of more advanced architectures such as Boltzmann networks and deep neural networks, which built on their insight to solve increasingly complex problems.
+
+% Sviluppo del machine learning
+\bigskip\noindent In recent decades, the development of neural networks has increasingly turned toward feedforward models and deep neural networks. These models are based on a layered structure in which neurons, organized in different layers, process information sequentially. Unlike recurrent and associative networks, feedforward networks do not have internal loops, allowing information to be handled in a simple and linear manner, making them suitable for classification and regression tasks.
+
+\noindent Deep networks make extensive use of logits, real numeric values that represent the activation of each neuron with respect to a certain input. These logits indicate how much a neuron “believes” the input to be similar to a specific class or feature, allowing the network to make decisions at different levels of abstraction.
+
+\noindent This statistical approach, which relies on the activation of neurons through logits, is the basis of modern backpropagation and learning algorithms, making neural networks increasingly accurate and flexible in solving complex problems.
+
+% Sviluppo delle reti di Hopfield continue
+\bigskip\noindent The analysis of continuous Hopfield networks proves fundamental to understanding the evolution of modern neural architectures. Unlike their discrete counterparts, these networks can directly incorporate the concept of backpropagation, allowing continuous optimization of weights through gradient activation functions.
+
+\noindent Continuous Hopfield networks introduce smoother dynamics in pattern representation and information retrieval, improving learning ability compared to discrete models. This aspect is highlighted in the article \textbf{“Hopfield Networks Are All You Need”}, where the authors explore how these networks can support more complex and adaptive learning functions.
+
+\noindent In addition, continuous Hopfield networks lay the foundation for the adoption of advanced techniques, such as deep neural networks, which make use of more sophisticated learning algorithms. Therefore, the evolution from discrete to continuous Hopfield networks offers important insights for research and application in the field of machine learning.
+
+% Cosa facciamo in questo articolo
+\bigskip\noindent In this article, we will explore the applications of Hopfield networks in advanced contexts. We will begin by examining discrete Hopfield networks in detail, explaining their foundational mechanisms and functionality, as well as their connections to statistical mechanics. Additionally, we will focus on using Hopfield networks for data cleaning, demonstrating how effective results can be achieved with minimal parameterization, a concept that parallels techniques in convolutional neural networks (CNNs).
+
+\noindent We will highlight how Hopfield networks can be employed for pattern management and reconstruction, allowing information retrieval even in the presence of noisy or incomplete data.
+
+\noindent In addition, we will analyze continuous and stochastic Hopfield networks, studying their relationships with Variational Autoencoders (VAEs) and how these interactions can further expand their scope in contemporary machine learning.
+
+\noindent Through these explorations, we intend to illustrate the potential of Hopfield networks not only as theoretical models, but as practical tools to address specific challenges in data preprocessing and performance improvement in learning models.

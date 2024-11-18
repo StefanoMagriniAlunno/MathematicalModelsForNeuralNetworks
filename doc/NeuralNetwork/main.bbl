@@ -1,0 +1,35 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Agliari(2024)]{MMNN}
+Elena Agliari.
+\newblock Mathematical models for neural networks, 2024.
+\newblock Università degli Studi di Roma La Sapienza.
+
+\bibitem[Alunno(2024)]{github_repo}
+Stefano~Magrini Alunno.
+\newblock Mathematical models for neural networks, 2024.
+\newblock URL
+  \url{https://github.com/StefanoMagriniAlunno/MathematicalModelsForNeuralNetworks}.
+
+\bibitem[Ramsauer et~al.(2021)Ramsauer, Schäfl, Lehner, Seidl, Widrich, Adler,
+  Gruber, Holzleitner, Pavlović, Sandve, Greiff, Kreil, Kopp, Klambauer,
+  Brandstetter, and Hochreiter]{ramsauer2021hopfieldnetworksneed}
+Hubert Ramsauer, Bernhard Schäfl, Johannes Lehner, Philipp Seidl, Michael
+  Widrich, Thomas Adler, Lukas Gruber, Markus Holzleitner, Milena Pavlović,
+  Geir~Kjetil Sandve, Victor Greiff, David Kreil, Michael Kopp, Günter
+  Klambauer, Johannes Brandstetter, and Sepp Hochreiter.
+\newblock Hopfield networks is all you need, 2021.
+\newblock URL \url{https://arxiv.org/abs/2008.02217}.
+
+\bibitem[Rodolà(2024)]{DLAI}
+Emanuele Rodolà.
+\newblock Deep learning and applied artificial intelligence, 2024.
+\newblock URL \url{https://erodola.github.io/DLAI-s2-2024/}.
+\newblock Università degli Studi di Roma La Sapienza.
+
+\end{thebibliography}

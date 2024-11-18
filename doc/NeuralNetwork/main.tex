@@ -1,0 +1,199 @@
+% !TeX spellcheck = en-UK
+% Qui tutto ciò che c’ è da saper su LaTeX: http://www.lorenzopantieri.net/LaTeX_files/ArteLaTeX.pdf
+% Per scrivere la bibliografia puoi vedere il seguente link: https://www.guitex.org/home/images/doc/GuideGuIT/bibliografia.pdf
+% Per usare in locale questo progetto latex è necessario eseguire le seguenti installazioni:
+% sudo apt install texlive texstudio texlive-publishers texlive-latex-extra texlive-fonts-extra texlive-science texlive-bibtex-extra texlive-lang-english
+
+% Tipo di documento
+\documentclass[oneside]{book}
+
+% Pacchetti
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{imakeidx}
+\usepackage{appendix}
+\usepackage{enumitem}
+\usepackage{marginnote}
+\usepackage{tocloft}
+\usepackage{float}
+%pacchetti matematici
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{siunitx}
+% !ATTENZIONE: c'è un bug in thmtools, per approfondire vedere: https://tex.stackexchange.com/questions/305174/proof-environment-produces-proof-proof-only-when-thmbox-is-used
+\usepackage{letltxmacro}
+\LetLtxMacro\amsproof\proof
+\LetLtxMacro\amsendproof\endproof
+\usepackage{thmtools}
+\AtBeginDocument{%
+	\LetLtxMacro\proof\amsproof
+	\LetLtxMacro\endproof\amsendproof
+}
+\usepackage{dsfont}
+% pacchetti per le immagini
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage[dvipsnames, table]{xcolor}
+% pacchetti per la scrittura di codice
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{marvosym}
+% pacchetti per la gestione di citazioni e bibliografia
+\usepackage[sort]{natbib}
+% citazioni migliori
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{cleveref}
+
+% Settings
+\bibliographystyle{plainnat} %ordine della bibliogragia
+\setcitestyle{numbers}
+\setcitestyle{square}
+\definecolor{Teal}{rgb}{0.0, 0.5, 0.5}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=MidnightBlue,  % Un blu scuro, meno appariscente ma ben visibile
+    citecolor=ForestGreen,   % Verde più scuro e tenue rispetto al verde brillante
+    filecolor=RoyalPurple,   % Un viola meno intenso, che non è troppo chiaro
+    urlcolor=Teal,           % Un colore verde-blu scuro, meno brillante del ciano
+    pdftitle={Esempio di Documento},
+    pdfauthor={Nome Autore},
+    pdfkeywords={Latex, hyperref, hyperlink}
+}
+
+% Definizioni
+\lstdefinestyle{code}{
+    backgroundcolor=\color{white},
+    commentstyle=\bfseries\itshape\color{gray},
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{gray},
+    numbersep=5pt,
+    stringstyle=\color{orange},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=true,
+    numbers=left,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    captionpos=t,
+    frame=bottomline,
+    breakatwhitespace=true,
+    breaklines=true,
+    keepspaces=true,
+    tabsize=2,
+    escapeinside={\%*}{*)}
+}
+
+\declaretheorem[
+    name=Remark,
+    numbered=no,
+    style=remark
+]{remark}
+\declaretheorem[
+    name=Exempli Gratia,
+    numbered=no, shaded,
+    style=remark
+]{exempli_gratia}
+\declaretheorem[
+    name=Definition,
+    numberwithin=section, shaded,
+    style=definition
+]{definition}
+\declaretheorem[
+    name=Notation,
+    numbered=no, shaded,
+    style=definition
+]{notation}
+\declaretheorem[
+    name=Theorem,
+    numberwithin=chapter, thmbox=M,
+    style=plain
+]{theorem}
+\declaretheorem[
+    name=Proposition,
+    numberwithin=chapter,
+    style=plain
+]{proposition}
+\declaretheorem[
+    name=Lemma,
+    numberwithin=section,
+    style=plain
+]{lemma}
+\declaretheorem[
+    name=Corollary,
+    numbered=no,
+    style=plain
+]{corollary}
+
+\algnewcommand{\Where}[2]{\State \textbf{where}\ #1\ \textbf{do} #2}
+
+\definecolor{mint}{rgb}{0.88, 1.0, 0.88}
+\definecolor{lavender}{rgb}{0.9, 0.9, 0.98}
+\definecolor{honeydew}{rgb}{0.94, 1.0, 0.94}
+
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\lse}{lse}
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\argmin}{argmin}
+\DeclareMathOperator{\argmax}{argmax}
+\DeclareMathOperator{\diagonal}{diag}
+\DeclareMathOperator{\accumulation}{acc}
+\DeclareMathOperator{\closure}{cl}
+\DeclareMathOperator{\internal}{int}
+\DeclareMathOperator{\constant}{const}
+
+\newcommand{\mathdef}{\coloneqq}
+\newcommand{\upeq}[1]{\overset{#1}{=}}
+\newcommand{\subapprox}[1]{\underset{#1}{\approx}}
+
+% Sorgenti
+\includeonly{
+    glossary,
+    bibliography,
+    main/Introduction,
+    main/DiscreteHopfield,
+    main/ContinueHopfield,
+    main/Applications,
+    main/Conclusions,
+}
+
+\makeindex  % produce l'indice
+
+\title{Continuous Hopfield Networks}
+\author{
+    Marcello Catacchini
+    \and
+    Stefano Magrini Alunno
+    \and
+    Dario Ferracci
+}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+    \maketitle
+    \tableofcontents
+
+\mainmatter
+	\setcounter{page}{1}
+    \include{main/Introduction}
+    \include{main/DiscreteHopfield}
+    \include{main/ContinueHopfield}
+    \include{main/Applications}
+    \include{main/Conclusions}
+
+\backmatter
+
+    \bibliography{bibliography}
+
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+
+\end{document}
