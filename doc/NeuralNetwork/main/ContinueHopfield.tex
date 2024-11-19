@@ -300,9 +300,9 @@ We have proved that given a starting point $\xi_0$ the sequence defined by the u
 To study this, we write the updating rule as:
 $\xi^{\text{new}} = f(\xi)$. From a previous remark we can compute the Jacobian of $f$ as:
 \[
-J = \frac{\partial f(\xi)}{\partial \xi} = \beta X \left(\diagonal(p(\beta XT \xi)) - p(\beta XT \xi)p(\beta XT \xi)^T \right)X^T = \beta J_s
+J = \frac{\partial f(\xi)}{\partial \xi} = \beta X \left(\diagonal(p(\beta X^T \xi)) - p(\beta X^T \xi)p(\beta X^T \xi)^T \right)X^T = \beta J_s
 \]
-From now on we write $p = p(\beta XT \xi)$ to simplify the notation. \\
+From now on we write $p = p(\beta X^T \xi)$ to simplify the notation. \\
 We also write: $\mathbb{E}_p\left[f(x)\right] = \sum_i p_i f(x_i)$.
 \begin{lemma}
     $\textnormal{Var}_p(x) = J_s$
@@ -372,21 +372,21 @@ The previous proposition states that we cannot properly use the Continuous Hopfi
 	\[
 	\left\|x^i - f(\xi)\right\| \leq 2 \epsilon M
 	\]
-	where $M = \max_i \left\|x^i\right\|$ and $\epsilon = (N-1)e^{-\beta c}$
+	where $M = \max_i \left\|x^i\right\|$ and $\epsilon = (P-1)e^{-\beta c}$
 	\begin{proof}
 		\begin{align*}
 			\left[\softmax(\beta X^T \xi)\right]_i &= \frac{\exp(\beta x^i \xi)}{\sum_j \exp(\beta x^j \xi)} = \frac{1}{1 + \sum_{j\neq i} \exp(\beta \xi^Tx^j-\beta \xi^T x^i)} \geq \frac{1}{1 + \sum_{j\neq i} \exp(-\beta c)} \\
-			&= \frac{1}{1 + (N-1) \exp(-\beta c)} = 1 - \frac{ (N-1) \exp(-\beta c)}{1 + (N-1) \exp(-\beta c)} \\
-			&= 1 - \frac{\epsilon}{1 + (N-1) \exp(-\beta c)} \geq 1 - \epsilon
+			&= \frac{1}{1 + (P-1) \exp(-\beta c)} = 1 - \frac{ (P-1) \exp(-\beta c)}{1 + (P-1) \exp(-\beta c)} \\
+			&= 1 - \frac{\epsilon}{1 + (P-1) \exp(-\beta c)} \geq 1 - \epsilon
 			\intertext{given k $\neq i$ then:}
 			\left[\softmax(\beta X^T \xi)\right]_k &= \frac{\exp(\beta x^k \xi)}{\sum_j \exp(\beta x^j \xi)} = \frac{\exp(\beta \xi^Tx^k-\beta \xi^T x^i)}{1 + \sum_{j\neq i} \exp(\beta \xi^Tx^j-\beta \xi^T x^i)} \\
-			&\leq \frac{\exp(-\beta c)}{1 + \sum_{j\neq i} \exp(\beta \xi^Tx^j-\beta \xi^T x^i)} \leq \exp(-\beta c) = \frac{\epsilon}{N-1}
+			&\leq \frac{\exp(-\beta c)}{1 + \sum_{j\neq i} \exp(\beta \xi^Tx^j-\beta \xi^T x^i)} \leq \exp(-\beta c) = \frac{\epsilon}{P-1}
 		\end{align*}
 		Now using the definition of $f$, we can prove the proposition:
 		\begin{align*}
 			\left\|x^i - f(\xi)\right\| &= \left\|x^i - X \softmax(\beta X \xi)\right\| = \left\|(1 - [\softmax(\beta X^T \xi)]_i) x^i - \sum_{k\neq i} x^k [\softmax(\beta X^T \xi)]_k\right\| \\
 			&\leq \left(1 - \left[\softmax(\beta X^T \xi)\right]_i\right) \left\|x^i\right\| + \sum_{k\neq i} \left[\softmax(\beta X^T \xi)\right]_k \left\|x^k\right\| \\
-			&\leq \epsilon M + \sum_{k\neq i} \frac{\epsilon}{N-1} M  = 2\epsilon M
+			&\leq \epsilon M + \sum_{k\neq i} \frac{\epsilon}{P-1} M  = 2\epsilon M
 		\end{align*}
 	\end{proof}
 \end{lemma}
@@ -395,43 +395,43 @@ The previous lemma suggests that separate patterns and $\beta$ not too small wil
 	\label{def:Si}
 	Given a pattern matrix $X$ we define:
 	\[
-	S_i = \left\{ \xi \middle| ||\xi - x^i|| \leq \frac{1}{\beta N M}  \right\}
+	S_i = \left\{ \xi \middle| \left\|\xi - x^i\right\| \leq \frac{1}{\beta P M}  \right\}
 	\]
 \end{definition}
 \begin{proposition}\text{from lemma.A5 in \cite{ramsauer2021hopfieldnetworksneed}}\\
 	\label{prop:local_conv}
-	If $\xi \in S_i$ and $\Delta_i \geq \frac{2}{\beta N} + \frac{1}{\beta} \log(2(N-1)N \beta M^2)$ then: $f(S_i) \subseteq S_i$
+	If $\xi \in S_i$ and $\Delta_i \geq \frac{2}{\beta P} + \frac{1}{\beta} \log(2(P-1)P \beta M^2)$ then: $f(\xi) \in S_i$
 	\begin{proof}
 		We define $\widetilde{\Delta_i}= \min_{j\neq i} \xi^Tx^i - \xi^T x^j$\\
-		Using the  Cauchy-Schwarz inequality, we get: $|\xi^Tx^j - (x^i)^Tx^j| \leq ||\xi - x^i||\, ||x^j|| \leq ||\xi - x^i|| M$
+		Using the  Cauchy-Schwartz inequality, we get: $\left|\xi^Tx^j - (x^i)^Tx^j\right| \leq \left\|\xi - x^i\right\|\, \left\|x^j\right\| \leq \left\|\xi - x^i\right\| M$
 
 		\noindent So we can say that:
 		\begin{align*}
-			\widetilde{\Delta_i} &= \min_{j\neq i} \xi^Tx^i - \xi^T x^j =  \min_{j\neq i} \xi^Tx^i -(x^i)^Tx^i + (x^i)^Tx^i  -\xi^Tx^j + (x^i)^Tx^j - (x^i)^Tx^j \\
-			&\geq \min_{j\neq i} ((x^i)^Tx^i - ||\xi - x^i|| M) - ((x^i)^Tx^j +||\xi - x^i|| M) \\
-			&= -2||\xi -x^i||M +  \min_{j\neq i} (x^i)^Tx^i - (x^i)^Tx^j = \Delta_i - 2||\xi -x^i||M  \\
-			& \geq \Delta_i - \frac{2}{\beta N}
+			\widetilde{\Delta_i} &= \min_{j\neq i} \xi^Tx^i - \xi^T x^j =  \min_{j\neq i} \xi^Tx^i -\left(x^i\right)^Tx^i + \left(x^i\right)^Tx^i  -\xi^Tx^j + \left(x^i\right)^Tx^j - \left(x^i\right)^Tx^j \\
+			&\geq \min_{j\neq i} \left(\left(x^i\right)^Tx^i - \left\|\xi - x^i\right\| M\right) - \left(\left(x^i\right)^Tx^j +\left\|\xi - x^i\right\| M\right) \\
+			&= -2\left\|\xi -x^i\right\|M +  \min_{j\neq i} \left(x^i\right)^Tx^i - \left(x^i\right)^Tx^j = \Delta_i - 2\left\|\xi -x^i\right\|M  \\
+			& \geq \Delta_i - \frac{2}{\beta P}
 		\end{align*}
 		Where the last inequality holds because  $\xi \in S_i$.\\
 		From \cref{lemma:Pattern_separation} we can affirm that:
 		\begin{align*}
-			||x^i - f(\xi)|| &\leq 2 \epsilon M = 2 M (N-1) \exp(-\beta \widetilde{\Delta_i}) \leq  2 M (N-1) \exp(-\beta (\Delta_i - \frac{2}{\beta N})) \\
-			&\leq 2 M (N-1) \exp(-\beta ( \frac{2}{\beta N} + \frac{1}{\beta} \log(2(N-1)N \beta M^2) - \frac{2}{\beta N}))\\
-			&=  2 M (N-1) \frac{1}{2(N-1)N \beta M^2} = \frac{1}{\beta N  M}
+			\|x^i - f(\xi)\| &\leq 2 \epsilon M = 2 M (P-1) \exp\left(-\beta \widetilde{\Delta_i}\right) \leq  2 M (P-1) \exp\left(-\beta \left(\Delta_i - \frac{2}{\beta P}\right)\right) \\
+			&\leq 2 M \left(P-1\right) \exp\left(-\beta \left( \frac{2}{\beta P} + \frac{1}{\beta} \log\left(2\left(P-1\right)P \beta M^2\right) - \frac{2}{\beta P}\right)\right)\\
+			&=  2 M \left(P-1\right) \frac{1}{2\left(P-1\right)P \beta M^2} = \frac{1}{\beta P  M}
 		\end{align*}
 	\end{proof}
 \end{proposition}
-Using the previous proposition and \cref{th:statonary_points} we can state that if the input is inside a sphere $S_i$, than the accumulation points that are point of minima for the energy are inside the sphere that allows us to use the network properly, with the right choice of the temperature,  because different input gives different output.
+Using the previous proposition and \cref{th:statonary_points} we can state that if the input is inside a sphere $S_i$, then the accumulation points, which are points of minima for the energy, are inside the sphere, which allows us to use the network properly, with the right choice of temperature, because different input gives different output.
 \begin{remark}
 	We can always find a value for $\beta$ that satisfies the condition of the previous proposition $\forall i$  solving:
 	\[
-	\min_i \Delta_i \geq \frac{2}{\beta N} + \frac{1}{\beta} \log(2(N-1)N \beta M^2)
+	\min_i \Delta_i \geq \frac{2}{\beta P} + \frac{1}{\beta} \log(2(P-1)P \beta M^2)
 	\]
 	which is equivalent to solving:
 	\[
-	\beta \geq \frac{2}{N \min_i \Delta_i }+\frac{\log(2(N-1)N M^2)}{\min_i \Delta_i} +\frac{ \log(\beta)}{ \min_i \Delta_i}
+	\beta \geq \frac{2}{P \min_i \Delta_i }+\frac{\log(2(P-1)P M^2)}{\min_i \Delta_i} +\frac{ \log(\beta)}{ \min_i \Delta_i}
 	\]
-	which solution is: $\beta \in (0,\beta_-] \cup [\beta_+,\infty)$ where $\beta_-,\beta_+$ are the point of \\intersection of $y=x$ and $y=\frac{2}{N \min_i \Delta_i }+\frac{\log(2(N-1)N M^2)}{\min_i \Delta_i} +\frac{ \log(x)}{ \min_i \Delta_i}$. \\
+	which solution is: $\beta \in (0,\beta_-] \cup [\beta_+,\infty)$ where $\beta_-,\beta_+$ are the point of \\intersection of $y=x$ and $y=\frac{2}{P \min_i \Delta_i }+\frac{\log(2(P-1)P M^2)}{\min_i \Delta_i} +\frac{ \log(x)}{ \min_i \Delta_i}$. \\
 	For retrieval, the smallest solutions are useless because they correspond to the global convergence state of the network, as proved in \cref{prop:J_norm}. However, the largest ones are useful because they can give disjoint $S_i$.
 \end{remark}
 
@@ -449,7 +449,7 @@ In this section we want to analyse the differences and analogies between the dis
 	\item \textbf{Energy minimization}\\
 	An energy function can be defined for both networks, expressed in terms of correlations with stored patterns. This function decreases along the network dynamics and guides the system towards energy minima.
 	\item \textbf{Stochasticity and temperature} \\
-	Both networks have a parameter called temperature, which can be tuned to facilitate convergence. However, this parameter affects each network differently: in discrete networks, temperature controls the amount of random noise in the updating rule, introducing a degree of stochasticity. In continuous networks, the temperature affects how information is integrated within the softmax operation, so there is no randomness. Despite this difference, the two networks show similar behaviour with respect to temperature. In both cases, high temperatures lead to uninformative outputs, where each input is transformed into a generic, uninformative result. Conversely, too low a temperature can also be problematic, leading to trivial outputs in both networks.
-    \item \textbf{Pattern and training}\\
-    In both networks, the energy function and update rules are defined in terms of stored patterns. However, due to the discrete nature of the neurons, the dynamics of discrete networks cannot be distinguished from the pattern vectors. In contrast, continuous networks allow the computation of derivatives, which allows them to be integrated into larger deep neural networks and trained with backpropagation. Discrete networks, on the other hand, lack any form of learning because the patterns are fixed and remain unchanged.
+	Both networks have a parameter called temperature, which can be tuned to facilitate convergence. However, this parameter affects each network differently: in discrete networks, temperature controls the amount of random noise in the updating rule, introducing a degree of stochasticity. In continuous networks, the temperature affects how information is integrated within the softmax operation, so there is no randomness. Despite this difference, the two networks show similar behavior with respect to temperature. In both cases, high temperatures lead to uninformative outputs, where each input is transformed into a generic, uninformative result. Conversely, too low a temperature can also be problematic, leading to trivial outputs in both networks.
+	\item \textbf{Pattern and training}\\
+	In both networks, the energy function and update rules are defined in terms of stored patterns. However, due to the discrete nature of the neurons, the dynamics of discrete networks cannot be distinguished from the pattern vectors. In contrast, continuous networks allow the computation of derivatives, which allows them to be integrated into larger deep neural networks and trained with backpropagation. Discrete networks, on the other hand, lack any form of learning because the patterns are fixed and remain unchanged.
 \end{itemize}

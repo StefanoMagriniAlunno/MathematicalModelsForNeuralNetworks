@@ -8,44 +8,46 @@ A level-1 auxiliary file: main/ContinueHopfield.aux
 A level-1 auxiliary file: main/Applications.aux
 A level-1 auxiliary file: main/Conclusions.aux
 Database file #1: bibliography.bib
-You've used 4 entries,
+Warning--empty year in Lyapunov
+You've used 5 entries,
             2773 wiz_defined-function locations,
-            616 strings with 5686 characters,
-and the built_in function-call counts, 1990 in all, are:
-= -- 152
-> -- 177
-< -- 3
-+ -- 61
-- -- 57
-* -- 157
-:= -- 326
-add.period$ -- 13
-call.type$ -- 4
-change.case$ -- 31
-chr.to.int$ -- 4
-cite$ -- 8
-duplicate$ -- 61
-empty$ -- 130
-format.name$ -- 61
-if$ -- 397
+            621 strings with 5793 characters,
+and the built_in function-call counts, 2286 in all, are:
+= -- 177
+> -- 187
+< -- 4
++ -- 65
+- -- 60
+* -- 172
+:= -- 370
+add.period$ -- 16
+call.type$ -- 5
+change.case$ -- 35
+chr.to.int$ -- 5
+cite$ -- 11
+duplicate$ -- 76
+empty$ -- 162
+format.name$ -- 65
+if$ -- 460
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 29
-num.names$ -- 16
-pop$ -- 78
+newline$ -- 34
+num.names$ -- 20
+pop$ -- 91
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 30
 quote$ -- 0
-skip$ -- 70
+skip$ -- 84
 stack$ -- 0
-substring$ -- 8
-swap$ -- 4
+substring$ -- 10
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 44
-warning$ -- 0
-while$ -- 12
+type$ -- 55
+warning$ -- 1
+while$ -- 15
 width$ -- 0
-write$ -- 57
+write$ -- 68
+(There was 1 warning)

@@ -32,8 +32,8 @@ It's possible to make a mathematical model in order to analyze a natural neural 
     \[
         S_i^{t+1} = \theta \left[\sum_j J_{ij}S_j^t - U_i^\star\right]
     \]
-    then, we define \textbf{ising} model, where the signal is $\xi_i^t = 2S_i^t-1\in\{-1,1\}$ and \\
-    the threshold is $h_i = 2U_i^\star - \sum_j J_{ij}$:
+    then, we define \textbf{Ising} model, where the signal is $\xi_i^t = 2S_i^t-1\in\{-1,1\}$ and \\
+    the threshold is $h_i = \sum_j J_{ij} - 2U_i^\star$:
     \begin{equation}
         \xi_i^{t+1} = \sgn \left[\sum_j J_{ij}\xi_j^{t} + h_i\right]
     \end{equation}
@@ -72,7 +72,7 @@ Choose $i$ randomly:
 \subsection{Sequential dynamics}
 Many properties of the Ising model dynamics are obtained using sequential dynamics. In this part of the article, we will focus on this updating rule.
 
-\begin{definition}[Lyapunov's function]
+\begin{definition}[Lyapunov's function - \citet{Lyapunov}]
     \label{def:Lypunov}
     Given an autonomous dynamical system $\dot{x} = f(x)$ with equilibrium point $x_0$, a Lyapunov function is a function $V$ such that:
     \begin{itemize}[itemsep=2pt, topsep=10pt]
@@ -179,7 +179,7 @@ with $z_i\left(t\right)\sim\mathcal{P}$ such that it's symmetric ($\implies\over
 
 \begin{lemma}[stochastic derivation]
     \label{lemma:stoch_der}
-    Using an ising model with sequential dynamics, we can formulate the following thesis:
+    Using an Ising model with sequential dynamics, we can formulate the following thesis:
     \[
         \mathbb{P}\left[\xi^{t+1}=\xi'\middle|\xi^t=\xi\right] =
         \frac{1}{N}\sum_i \frac{1}{2} (1 + \xi'_i \tanh(\beta \phi_i(\xi' )) \delta_{\xi,\xi'} + \frac{e^{-\beta \xi_i \phi_i(\xi)}}{2\cosh(\beta\phi_i(\xi))} \delta_{F_i(\xi),\xi'}
@@ -543,7 +543,7 @@ where $m_{N,x}(\xi) = \frac{1}{N} \sum_i \xi_i x_i $ \quad \textbf{Mattis magnet
 So it is equivalent to a Curie-Weiss model where $J = 2$.\\
 Given an initial state, we can use as output the Mattis magnetization after a sufficient number of updates. We can affirm that with a large enough number of neurons (so we can use TDL as a good approximation) and a low temperature, the system will evolve to show a magnetization close to the chosen pattern. It is important to note that there are two main attractors in this type of system, one related to the actual pattern ($m_{N,x}(\xi) \approx 1$) and the other with its negative ($m_{N,x}(\xi) \approx -1$), so this simple network gives as output the pattern or its negative, depending on which is "closer" to the initial configuration.
 \subsection{Hopfield model}
-n the previous pages we analyzed a network that stores one pattern, now we want to understand networks with more patterns, so we try again to express the Hamiltonian as a function of some order parameter.
+In the previous pages we analyzed a network that stores one pattern, now we want to understand networks with more patterns, so we try again to express the Hamiltonian as a function of some order parameter.
 \begin{definition}[Mattis magnetizzation] \label{def:mattis_mgn}
 Given the patterns $(x^1,\ldots,x^P)$ and a state $\xi$ we define:
 \[
@@ -584,7 +584,7 @@ In the previous definition it is important that the averaging is done before the
     \[
     \int_a^b \ldots \int_a^b e^{Nf(z)} dz \subapprox{N\to\infty} \left(\frac{2\pi}{N|-Hf(z^\star)|} \right)^{\frac{P}{2} }e^{Nf(z^\star)}
     \]
-    where $f$ is a holomorphic function, $z^\star \in \mathbb{C}^P$ with $P<<N $ (so we can only use it in the low load regime) is a saddle point for $f$ and the path of the integral passes through $z^\star$.  \\
+    where $f$ is a holomorphic function, $z^\star \in \mathbb{C}^P$ with $P\ll N $ (so we can only use it in the low load regime) is a saddle point for $f$ and the path of the integral passes through $z^\star$, $Hf\left(z^\star\right)$ the Hessian of $f$ in $z^\star$, $\left|-Hf\left(z^\star\right)\right|$ the determinant of $-Hf\left(z^\star\right)$.  \\
     We use this result with $a= -\infty$ and $b=+\infty$
 
     \noindent It is noted that the approximation is over the difference, so the difference between two members goes to $0$ when $N\to\infty$.
@@ -683,7 +683,7 @@ On the other hand, if $\beta < 1$, i.e. the temperature is less than the critica
     \]
     where $m^n$ contains $n$ ones and $P-n$ zeros and $m_n>0$.
     \begin{proof}
-    	then let $\mu >n $ then:
+    	Let $\mu >n $ then:
     	\[
     	(m^n)_\mu = 0 = \mathbb{E}(x^\mu)\mathbb{E}(\tanh(\beta m_n \sum_{\nu \leq n} x^\nu)) =  \mathbb{E}(x^\mu \tanh(\beta m_n \sum_{\nu \leq n} x^\nu)) = \mathbb{E}(x^\mu \tanh(\beta m^n X))
     	\]
