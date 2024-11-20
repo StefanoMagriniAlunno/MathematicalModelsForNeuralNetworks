@@ -74,10 +74,10 @@ This formula emphasises that the energy uses the density of $P$ symmetric Gaussi
     \begin{proof}
         For all $\xi\in\mathbb{R}^N$, it holds that:
         \begin{align*}
-            E_\beta\left(\xi,X\right)\geq0 &\iff \frac{1}{P}\sum_{i=1}^{P}\exp\left(-\frac12\beta\|\xi-x_i\|^2\right)\exp\left(-\frac12\beta\left(M^2-\|x_i\|^2\right)\right) \leq 1 \\
-            &\impliedby \forall{i\in\{1,\ldots,P\}} \left(\exp\left(-\frac12\beta\|\xi-x_i\|^2\right)\exp\left(-\frac12\beta\left(M^2-\|x_i\|^2\right)\right)\leq1\right) \\
+            E_\beta\left(\xi,X\right)\geq0 &\iff \frac{1}{P}\sum_{i=1}^{P}\exp\left(-\frac12\beta\left\|\xi-x_i\right\|^2\right)\exp\left(-\frac12\beta\left(M^2-\left\|x_i\right\|^2\right)\right) \leq 1 \\
+            &\impliedby \forall{i\in\{1,\ldots,P\}} \left(\exp\left(-\frac12\beta\left\|\xi-x_i\right\|^2\right)\exp\left(-\frac12\beta\left(M^2-\left\|x_i\right\|^2\right)\right)\leq1\right) \\
             &\iff \forall{i\in\{1,\ldots,P\}} \left(\left(-\frac12\beta\|\xi-x_i\|^2\right)+\left(-\frac12\beta\left(M^2-\|x_i\|^2\right)\right)\leq0\right) \\
-            &\iff \forall{i\in\{1,\ldots,P\}} \left(\|\xi-x_i\|^2+\left(M^2-\|x_i\|^2\right)\geq0\right) \\
+            &\iff \forall{i\in\{1,\ldots,P\}} \left(\left\|\xi-x_i\right\|^2+\left(M^2-\left\|x_i\right\|^2\right)\geq0\right) \\
         \end{align*}
     \end{proof}
 \end{lemma}
@@ -107,7 +107,7 @@ With $\langle{x_1,\ldots,x_P}\rangle$ the set $\{v|\exists p_1,\ldots,p_P\left(v
             E_\beta\left(\xi,X\right) &= -\beta^{-1}\ln\left(\sum_{i=1}^{P}\exp\left(\beta X^T\xi\right)\right) + \frac12\xi^T\xi + \beta^{-1}\ln P + \frac12 M^2 \\
             &= -\beta^{-1}\ln\left(\frac{1}{P}\sum_{i=1}^{P}\exp\left(\beta\xi^Tx_i\right)\right)+\frac12\xi^T\xi+\frac12M^2 \\
             &\leq -\beta^{-1}\left(\frac{1}{P}\sum_{i=1}^{P}\beta\xi^Tx_i\right)+\frac12\xi^T\xi+\frac12M^2 \\
-            &= -\xi^Tm_x + \frac12\xi^T\xi+\frac12M^2 \leq \|\xi\|\,\|m_x\| + \frac12\|\xi\|^2+\frac12M^2\leq2M^2
+            &= -\xi^Tm_x + \frac12\xi^T\xi+\frac12M^2 \leq \left\|\xi\right\|\,\left\|m_x\right\| + \frac12\left\|\xi\right\|^2+\frac12M^2\leq2M^2
         \end{align*}
         using $m_x \mathdef \frac{1}{P}\sum_{i=1}^{P}x_i $
 
@@ -138,14 +138,14 @@ Before we talk about convergence, we observe some simple properties of the energ
     \]
     Proof that the Jacobian of $\softmax$ has eigenvalue zero with eigenvector $\mathds{1}$:
     \[
-        \nabla_{v}p(v)\mathds{1} = (\diagonal(p(v))-p(v)p(v)^T)\mathds{1} = p(v) - p(v) = 0
+        \nabla_{v}p\left(v\right)\mathds{1} = \left(\diagonal\left(p\left(v\right)\right)-p\left(v\right)p\left(v\right)^T\right)\mathds{1} = p\left(v\right) - p\left(v\right) = 0
     \]
     Furthermore $\forall h \in \mathbb{R}^P $ holds:
      \begin{align*}
-         h^T \nabla_{v}p(v) h &= h^T ( \diagonal(p(v))-p(v)p(v)^T ) h = \left(\sum_{k=1}^{P} p(v)_k h_k^2\right)- \left( \sum_{k=1}^P p(v)_k h_k \right)\\
-         &= \left(\sum_{k=1}^{P} p(v)_k h_k^2\right)\left(\sum_{k=1}^P p(v)_k \right)- \left( \sum_{k=1}^P p(v)_k h_k \right) \geq 0
+         h^T \nabla_{v}p\left(v\right) h &= h^T \left( \diagonal\left(p\left(v\right)\right)-p\left(v\right)p\left(v\right)^T \right) h = \left(\sum_{k=1}^{P} p(v)_k h_k^2\right)- \left( \sum_{k=1}^P p(v)_k h_k \right)\\
+         &= \left(\sum_{k=1}^{P} p\left(v\right)_k h_k^2\right)\left(\sum_{k=1}^P p\left(v\right)_k \right)- \left( \sum_{k=1}^P p\left(v\right)_k h_k \right) \geq 0
      \end{align*}
-     where the last inequality is Cauchy-Schwartz applied to $a ,b$ such that $a_k=\sqrt{p(v)_k}h_k$ and $b_k = \sqrt{p(v)_k}$
+     where the last inequality is Cauchy-Schwartz applied to $a ,b$ such that $a_k=\sqrt{p\left(v\right)_k}h_k$ and $b_k = \sqrt{p\left(v\right)_k}$
 \end{remark}
 \begin{remark}
     The gradient of $\lse\left(\beta, v\right)$ with respect to $v$ is $\softmax(\beta v)$.
@@ -300,7 +300,7 @@ We have proved that given a starting point $\xi_0$ the sequence defined by the u
 To study this, we write the updating rule as:
 $\xi^{\text{new}} = f(\xi)$. From a previous remark we can compute the Jacobian of $f$ as:
 \[
-J = \frac{\partial f(\xi)}{\partial \xi} = \beta X \left(\diagonal(p(\beta X^T \xi)) - p(\beta X^T \xi)p(\beta X^T \xi)^T \right)X^T = \beta J_s
+J = \frac{\partial f\left(\xi\right)}{\partial \xi} = \beta X \left(\diagonal\left(p\left(\beta X^T \xi\right)\right) - p\left(\beta X^T \xi\right)p\left(\beta X^T \xi\right)^T \right)X^T = \beta J_s
 \]
 From now on we write $p = p(\beta X^T \xi)$ to simplify the notation. \\
 We also write: $\mathbb{E}_p\left[f(x)\right] = \sum_i p_i f(x_i)$.
@@ -308,9 +308,9 @@ We also write: $\mathbb{E}_p\left[f(x)\right] = \sum_i p_i f(x_i)$.
     $\textnormal{Var}_p(x) = J_s$
     \begin{proof}
         \begin{align*}
-            \text{Var}_p\left(x\right) &= \mathbb{E}_p\left[xx^T\right] - \mathbb{E}_p\left[x\right] \mathbb{E}_p\left[x\right]^T = X \mathbb{E}_p\left[\mathds{1}\right]X^T - Xp (Xp)^T \\
-            &= X(\diagonal(p))X^T -  Xp (Xp)^T =
-            X(\diagonal(p) - p p^T) X^T = J_s
+            \text{Var}_p\left(x\right) &= \mathbb{E}_p\left[xx^T\right] - \mathbb{E}_p\left[x\right] \mathbb{E}_p\left[x\right]^T = X \mathbb{E}_p\left[\mathds{1}\right]X^T - Xp \left(Xp\right)^T \\
+            &= X\left(\diagonal\left(p\right)\right)X^T -  Xp \left(Xp\right)^T =
+            X\left(\diagonal\left(p\right) - p p^T\right) X^T = J_s
         \end{align*}
         where the last equality holds for a remark made in the previous section.
     \end{proof}

@@ -593,13 +593,13 @@ To compute the quenched TDL, we start from an alternative formulation for the pa
 \begin{align*}
     Z_{\beta,N,X} &= \sum_\xi e^{-\beta \mathcal{H}_{N,X}(\xi)} =  \sum_\xi \prod_\mu e^{\frac{\beta N}{2}  m_{N,\mu}(\xi)^2 } \\
     &=  \sum_\xi \prod_\mu \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \frac{1}{2\pi} e^{ik_\mu (m_{N,\mu}(\xi) - y_\mu)} e^{\frac{\beta N}{2} y_\mu^2 }  dy_\mu dk_\mu \\
-    &= \sum_\xi  \prod_\mu \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}  \left(\frac{ dy_\mu dk_\mu }{2\pi} \right) \exp\left( \frac{i}{N} \sum_j k_\mu x^\mu_j \xi_j - i  \sum  k_\mu y_\mu + \frac{\beta N}{2} \sum  y_\mu^2  \right) \\
+    &= \sum_\xi  \prod_\mu \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}  \left(\frac{ dy_\mu dk_\mu }{2\pi} \right) \exp\left( \frac{i}{N} \sum_j k_\mu x^\mu_j \xi_j - i k_\mu y_\mu + \frac{\beta N}{2} y_\mu^2  \right) \\
     \intertext{We can substitute $k_\mu$ with $\frac{k_\mu}{N}$ and multiply the differential by N }
     &= \sum_\xi  \prod_\mu \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}  \left(\frac{ Ndy_\mu dk_\mu }{2\pi} \right) \exp\left( i \sum_{j} k_\mu x^\mu_j \xi_j - iN  k_\mu y_\mu + \frac{\beta N}{2}  y_\mu^2  \right) \\
     \intertext{This formulation allows us to sum over the configurations because we have linear dependence on the argument of the exponential, hence recalling that $\cos(x) = \frac{e^{ix} + e^{-ix}}{2}$ we obtain:}
     &= \int_{\mathbb{R}^{P\times 2}}\prod_\mu \left(\frac{ Ndy_\mu dk_\mu }{2\pi} \right) \exp\left(- iN  \sum_\mu k_\mu y_\mu + \frac{\beta N}{2} \sum_\mu y_\mu^2 \right) \sum_{\xi} \prod_j\prod_\mu\exp\left( i k_\mu x^\mu_j \xi_j\right) \\
     &\upeq{1} \int_{\mathbb{R}^{P\times 2}}\prod_\mu \left(\frac{ Ndy_\mu dk_\mu }{2\pi} \right) \exp\left(- iN  \sum_\mu k_\mu y_\mu + \frac{\beta N}{2} \sum_\mu y_\mu^2 \right) \prod_j\sum_{\xi_j}\prod_{\mu}\exp\left( i k_\mu x^\mu_j \xi_j\right) \\
-    &\upeq{2} \int_{\mathbb{R}^{P\times 2}}\prod_\mu \left(\frac{ Ndy_\mu dk_\mu }{2\pi} \right) \exp\left(- iN  \sum_\mu k_\mu y_\mu + \frac{\beta N}{2} \sum_\mu y_\mu^2 \right) \prod_j\left(2\cos\left(\sum_\mu ik_\mu x_j^\mu\right)\right) \\
+    &\upeq{2} \int_{\mathbb{R}^{P\times 2}}\prod_\mu \left(\frac{ Ndy_\mu dk_\mu }{2\pi} \right) \exp\left(- iN  \sum_\mu k_\mu y_\mu + \frac{\beta N}{2} \sum_\mu y_\mu^2 \right) \prod_j\left(2\cos\left(\sum_\mu k_\mu x_j^\mu\right)\right) \\
     &= \int_{\mathbb{R}^{P\times 2}} \prod_\mu \left(\frac{N dy_\mu dk_\mu }{2\pi} \right) \exp\left(  \sum_j \log\left(2 \cos\left(\sum_\mu k_\mu x^\mu_j  \right)\right) -i N  \sum_\mu k_\mu y_\mu +  \frac{\beta N}{2} \sum_\mu y_\mu^2  \right) \tag{1}\label{eqHop1}
     \intertext{In equivalence $1$, we used following state:}
     & \sum_\xi\prod_j s_j(\xi_j) = \sum_{\xi_N}\sum_{\xi_1,\ldots,\xi_{N-1}}s_N(\xi_N)\prod_{j=1}^{N-1} s_j(\xi_j) = \sum_{\xi_N}s_N(\xi_N) \sum_{\xi_1,\ldots,\xi_{N-1}}\prod_{j=1}^{N-1}s_j(\xi_j) \\
@@ -663,12 +663,12 @@ Moreover, if there is a single pattern to store, we obtain the self-consistent e
     If $\beta < 1$ then $m=0$ is the only solution for \cref{eq:SC_Hop}
     \begin{proof}
         \begin{align*}
-            m^2 &= \sum_\mu m_\mu m_\mu = \sum_\mu m_\mu \mathbb{E}(x^\mu \tanh(\beta m \cdot X)) =
-            \mathbb{E}(m \cdot X \tanh(\beta m \cdot X)) \\
-            &= \mathbb{E}(|m \cdot X| \tanh(\beta |m \cdot X|)) \leq \mathbb{E}(|m \cdot X| \beta |m \cdot X|)) \\
-            &= \beta \mathbb{E}(\sum_{\mu,\nu} (m_\mu x^\mu)(m_\nu x^\nu))
-            = \beta \sum_{\mu,\nu} m_\mu m_\nu \mathbb{E}(x^\mu x^\nu)
-            \intertext{in the TDL the average of the dot product of two different pattern is $0$ then we can replace $\mathbb{E}(x^\mu x^\nu)$ with $\delta_{\mu,\nu}$ }
+            m^2 &= \sum_\mu m_\mu m_\mu = \sum_\mu m_\mu \mathbb{E}\left(x^\mu \tanh\left(\beta m \cdot X\right)\right) =
+            \mathbb{E}\left[m \cdot X \tanh\left(\beta m \cdot X\right)\right] \\
+            &= \mathbb{E}\left[\left|m \cdot X\right| \tanh\left(\beta \left|m \cdot X\right|\right)\right] \leq \mathbb{E}\left[\left|m \cdot X\right| \beta \left|m \cdot X\right|\right] \\
+            &= \beta \mathbb{E}\left[\sum_{\mu,\nu} \left(m_\mu x^\mu\right)\left(m_\nu x^\nu\right)\right]
+            = \beta \sum_{\mu,\nu} m_\mu m_\nu \mathbb{E}\left[x^\mu x^\nu\right]
+            \intertext{in the TDL the average of the dot product of two different pattern is $0$ then we can replace $\mathbb{E}\left[x^\mu x^\nu\right]$ with $\delta_{\mu,\nu}`$ }
             &= \beta  \sum_{\mu,\nu} m_\mu m_\nu \delta_{\mu,\nu} = \beta \sum_\mu m_\mu m_\mu = \beta m^2
             \intertext{that is true if and only if $m=0$.}
         \end{align*}
@@ -685,15 +685,15 @@ On the other hand, if $\beta < 1$, i.e. the temperature is less than the critica
     \begin{proof}
     	Let $\mu >n $ then:
     	\[
-    	(m^n)_\mu = 0 = \mathbb{E}(x^\mu)\mathbb{E}(\tanh(\beta m_n \sum_{\nu \leq n} x^\nu)) =  \mathbb{E}(x^\mu \tanh(\beta m_n \sum_{\nu \leq n} x^\nu)) = \mathbb{E}(x^\mu \tanh(\beta m^n X))
+    	(m^n)_\mu = 0 = \mathbb{E}\left[x^\mu\right]\mathbb{E}\left[\tanh\left(\beta m_n \sum_{\nu \leq n} x^\nu\right)\right] =  \mathbb{E}\left[x^\mu \tanh\left(\beta m_n \sum_{\nu \leq n} x^\nu\right)\right] = \mathbb{E}\left[x^\mu \tanh\left(\beta m^n X\right)\right]
     	\]
     	where the third equality is the true only if $\mu >n$ and is the independence of the random variables $x^\mu$.\\
     	Let $\mu \leq n$ then $m^n$ is a solution if the line $y = m_n$ intersects the function $$y =  \mathbb{E}(x^\mu \tanh(\beta m^n X))=f(m_n)$$. \\
     	At zero both functions have the same value and for $m_n \to \infty$ the second one goes to one while the line goes to infinity, then if $f(m_n) > m_n$ for some $m_n >0$ a solution exists.\\
     	We will prove this by showing that $f'(0) > 1$.
     	\begin{align*}
-    		f'(0) &= \frac{d\mathbb{E}(x^\mu \tanh(\beta m^n X))}{dm_n} \big|_{m_n=0} = \mathbb{E}(x^\mu \frac{d \tanh(\beta m^n X)}{dm_n} \big|_{m_n=0} ) \\
-    		&= \mathbb{E}(x^\mu  (1 - \tanh(\beta m^n X)^2 ) \beta X \big|_{m_n=0} ) =\beta  \mathbb{E}((x^\mu)^2 + \sum_{\nu \neq \mu } x^\mu x^\nu ) = \beta > 1
+    		f'(0) &= \frac{d\mathbb{E}\left[x^\mu \tanh\left(\beta m^n X\right)\right]}{dm_n} \big|_{m_n=0} = \mathbb{E}\left[x^\mu \frac{d \tanh\left(\beta m^n X\right)}{dm_n} \big|_{m_n=0} \right] \\
+    		&= \mathbb{E}\left[x^\mu  \left(1 - \tanh\left(\beta m^n X\right)^2 \right) \beta X \big|_{m_n=0} \right] =\beta  \mathbb{E}\left[\left(x^\mu\right)^2 + \sum_{\nu \neq \mu } x^\mu x^\nu \right] = \beta > 1
     	\end{align*}
     \end{proof}
 \end{lemma}
@@ -707,22 +707,22 @@ With the previous lemma we showed that there are many more false solutions for t
            \beta R_{\mu,\nu} \quad \quad \mu \neq \nu \land \mu,\nu \leq n
        \end{cases}
     \]
-    where $Q = \mathbb{E}(\tanh^2(\beta m^n X))$, $R_{\mu,\nu} =  \mathbb{E}(x^\mu x^\nu \tanh^2(\beta m^n X)) $.
+    where $Q = \mathbb{E}\left[\tanh^2\left(\beta m^n X\right)\right]$, $R_{\mu,\nu} =  \mathbb{E}\left[x^\mu x^\nu \tanh^2\left(\beta m^n X\right)\right] $.
     \begin{proof}
-        The free energy is $f(m) = \frac12 \sum_\mu  (m_\mu)^2 -\frac{1}{\beta} \mathbb{E}(\log(2 \cosh(\beta  m X ))) $ then:
+        The free energy is $f(m) = \frac12 \sum_\mu  \left(m_\mu\right)^2 -\frac{1}{\beta} \mathbb{E}\left[\log\left(2 \cosh\left(\beta  m X \right)\right)\right] $ then:
         \[
-        (\nabla f(m))_\mu = m_\mu - \mathbb{E}(\tanh(\beta  m X ) x^\mu  )
+        \left(\nabla f\left(m\right)\right)_\mu = m_\mu - \mathbb{E}\left[\tanh\left(\beta  m X \right) x^\mu  \right]
         \]
         \begin{align*}
-             (Hf(m))_{\mu,\nu} &= \delta_{\mu,\nu}  -\beta \mathbb{E}((1 - \tanh^2(\beta  m X )) x^\mu x^\nu ) = \delta_{\mu,\nu}  - \beta\mathbb{E}( x^\mu x^\nu) +\beta \mathbb{E}(\tanh^2(\beta  m X )x^\mu x^\nu ) \\
-             &=\delta_{\mu,\nu}  - \beta\delta_{\mu,\nu} +\beta \mathbb{E}(\tanh^2(\beta  m X )x^\mu x^\nu)
+             \left(Hf\left(m\right)\right)_{\mu,\nu} &= \delta_{\mu,\nu}  -\beta \mathbb{E}\left[\left(1 - \tanh^2\left(\beta  m X \right)\right) x^\mu x^\nu \right] = \delta_{\mu,\nu}  - \beta\mathbb{E}\left[ x^\mu x^\nu\right] +\beta \mathbb{E}\left[\tanh^2\left(\beta  m X \right)x^\mu x^\nu \right] \\
+             &=\delta_{\mu,\nu}  - \beta\delta_{\mu,\nu} +\beta \mathbb{E}\left[\tanh^2\left(\beta  m X \right)x^\mu x^\nu\right]
         \end{align*}
         The thesis follows because we can factor the expectation in the second case and get zero.
     \end{proof}
 \end{lemma}
 Furthermore, after proving the lemma, we can state that
 \[
-(Hf(0))_{\mu,\nu} = \begin{cases}
+\left(Hf\left(0\right)\right)_{\mu,\nu} = \begin{cases}
     1 - \beta &  \mu = \nu \\
     0 & \mu \neq \nu
 \end{cases}
@@ -731,7 +731,7 @@ So $m=0$ is the only minimum if $\beta < 1$.  \\
 Now let us analyze whether $m^1$ is a minimum: \\
 $Hf(m^1)$ is a diagonal matrix, so it is definitely positive if its diagonal values are greater than zero.\\
     \[
-     (Hf(m^1))_{\mu,\mu} = 1- \beta + \beta  \mathbb{E}(\tanh^2(\beta m^1 X)) = 1- \beta + \beta \tanh^2(\beta m_1)) = 1 - \beta(1-  \tanh^2(\beta m_1))  )
+     \left(Hf\left(m^1\right)\right)_{\mu,\mu} = 1- \beta + \beta  \mathbb{E}\left[\tanh^2\left(\beta m^1 X\right)\right] = 1- \beta + \beta \tanh^2\left(\beta m_1\right) = 1 - \beta\left(1-  \tanh^2\left(\beta m_1\right)\right)
     \]
 where the second equality is true because the hyperbolic tangent is odd and the patterns have only $-1,1$ as possible values.
 To prove that $(Hf(m^1))_{\mu,\mu}$ is positive we start with the \cref{eq:SC_Hop} for $m^1$:
@@ -740,15 +740,15 @@ To prove that $(Hf(m^1))_{\mu,\mu}$ is positive we start with the \cref{eq:SC_Ho
     \]
 Now deriving both members with respect to $\beta$ we get
 \begin{align*}
-    &\frac{\partial m_1}{\partial \beta} = \frac{\partial \tanh(\beta m_1)}{\partial \beta} = (1 - \tanh^2(\beta m_1))(m_1 + \beta \frac{\partial m_1}{\partial \beta}) \quad \iff \\
-    & \frac{\partial m_1}{\partial \beta}(1 - \tanh^2(\beta m_1)) = m_1 (1 - \tanh^2(\beta m_1)) \quad \iff \\
-    & (1 - \tanh^2(\beta m_1)) =   \frac{m_1}{\frac{\partial m_1}{\partial \beta}} (1 - \tanh^2(\beta m_1)) > 0
+    &\frac{\partial m_1}{\partial \beta} = \frac{\partial \tanh(\beta m_1)}{\partial \beta} = \left(1 - \tanh^2\left(\beta m_1\right)\right)\left(m_1 + \beta \frac{\partial m_1}{\partial \beta}\right) \quad \iff \\
+    & \frac{\partial m_1}{\partial \beta}\left(1 - \tanh^2\left(\beta m_1\right)\right) = m_1 \left(1 - \tanh^2\left(\beta m_1\right)\right) \quad \iff \\
+    & \left(1 - \tanh^2\left(\beta m_1\right)\right) =   \frac{m_1}{\frac{\partial m_1}{\partial \beta}} \left(1 - \tanh^2\left(\beta m_1\right)\right) > 0
 \end{align*}
 The last inequality holds because $\beta > 1$ when $m^1$ is a solution.\\
 Thus we obtain that all pure solutions are points of minima for the free energy.\\
 It can also be shown that:
 \begin{itemize}
-    \item $m^n$ is a minimum if $n$ is odd and $f^Q_\beta(m^1) < f^Q_\beta(m^3)<\ldots$
+    \item $m^n$ is a minimum if $n$ is odd and $f^Q_\beta\left(m^1\right) < f^Q_\beta\left(m^3\right)<\ldots$
     \item $m^n$ is not a minimum if $n$ is even
 \end{itemize}
 The energy landscape contains many minima, with this perspective we can see the positive influence of the noise, in fact it prevents the network to fall into a local minima of a spurious and never escape from it. \\
